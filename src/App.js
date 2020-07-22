@@ -11,6 +11,10 @@ function App() {
       setValue({...value, [text]: value});
   }
 
+  let local = "http://localhost:5000/weather";
+  let deployed = "https://random-weather-backend.herokuapp.com/";
+  let base_url = deployed;
+
 
   //makes a call to the back end API for a number of 
   function getData (){
@@ -22,7 +26,7 @@ function App() {
         setValue({...value, error: "requests greater than 100 not allowed"});
       }
       else { //if input is valid, sends request to back end
-        Axios.get(`http://localhost:5000/weather/${value.undefined}`)
+        Axios.get(`${base_url}/${value.undefined}`)
         .then(res => {
           setValue({text: "", weather_data: res.data});
         })
